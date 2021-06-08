@@ -1,5 +1,4 @@
 import React from "react";
-import Buttons from "./Buttons";
 import Data from "./DataStatistics";
 
 class Counter extends React.Component {
@@ -9,48 +8,39 @@ class Counter extends React.Component {
     bad: 0,
   };
 
-  handleIncrementGood = () => {
-    this.setState((prevState) => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
+  handleIncrement = (review) => () => {
+    this.setState({ [review]: this.state[review] + 1 });
   };
 
-  handleIncrementNeutral = () => {
-    this.setState((prevState) => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
   };
 
-  handleIncrementBad = () => {
-    this.setState((prevState) => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
-  };
+  countPositiveFeedbackPercentage = () => {
+    const { good, neutral, bad } = this.state;
 
-  countTotalFeedback = () => {};
-  countPositiveFeedbackPercentage = () => {};
+    return Math.round((good * 100) / (good + neutral + bad)) || 0;
+  };
 
   render() {
+    const { good, neutral, bad } = this.state;
+
     return (
       <div className="Conteiner">
         <p>Please leave feedback</p>
-        <Buttons
-          onHandleIncrementGood={this.handleIncrementGood}
-          onHandleIncrementNeutral={this.handleIncrementNeutral}
-          onHandleIncrementBad={this.handleIncrementBad}
-        />
 
-        <h1>Statistics</h1>
         <Data
-          onStateGood={this.state.good}
-          onStateNeutral={this.state.neutral}
-          onStateBad={this.state.bad}
+          good="good"
+          countGood={good}
+          neutral="neutral"
+          countNeutral={neutral}
+          bad="bad"
+          countBad={bad}
+          onButtonGood={this.handleIncrement("good")}
+          onButtonNeutral={this.handleIncrement("neutral")}
+          onButtonBad={this.handleIncrement("bad")}
+          total={this.countTotalFeedback()}
+          positiveFeedback={this.countPositiveFeedbackPercentage()}
         />
       </div>
     );

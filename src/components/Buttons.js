@@ -1,29 +1,36 @@
 import React from "react";
+import { Component } from "react";
 
-const Buttons = ({
-  onHandleIncrementGood,
-  onHandleIncrementNeutral,
-  onHandleIncrementBad,
-}) => (
-  <>
-    <ul>
-      <li>
-        <button type="button" onClick={onHandleIncrementGood}>
+export class Buttons extends Component {
+  render() {
+    const { onClickGood, onClickNeutral, onClickBad } = this.props;
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => {
+            onClickGood();
+          }}
+        >
           Good
         </button>
-      </li>
-      <li>
-        <button type="button" onClick={onHandleIncrementNeutral}>
+        <button
+          type="button"
+          onClick={() => {
+            onClickNeutral();
+          }}
+        >
           Neutral
         </button>
-      </li>
-      <li>
-        <button type="button" onClick={onHandleIncrementBad}>
+        <button
+          type="button"
+          onClick={() => {
+            onClickBad();
+          }}
+        >
           Bad
         </button>
-      </li>
-    </ul>
-  </>
-);
-
-export default Buttons;
+      </>
+    );
+  }
+}
