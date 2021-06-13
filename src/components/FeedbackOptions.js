@@ -1,6 +1,7 @@
 import React from "react";
 import { Buttons } from "./Buttons";
 import { Statistics } from "./Statistics";
+import Notification from "./NotificationMessage";
 
 class Counter extends React.Component {
   state = {
@@ -37,13 +38,18 @@ class Counter extends React.Component {
           onClickNeutral={this.handleIncrement("neutral")}
           onClickBad={this.handleIncrement("bad")}
         />
-        <Statistics
-          countGood={good}
-          countBad={bad}
-          countNeutral={neutral}
-          total={this.countTotalFeedback()}
-          positiveFeedback={this.countPositiveFeedbackPercentage()}
-        />
+        <h1>Statistics</h1>
+        {good || neutral || bad >= 1 ? (
+          <Statistics
+            countGood={good}
+            countBad={bad}
+            countNeutral={neutral}
+            total={this.countTotalFeedback()}
+            positiveFeedback={this.countPositiveFeedbackPercentage()}
+          />
+        ) : (
+          <Notification />
+        )}
       </div>
     );
   }

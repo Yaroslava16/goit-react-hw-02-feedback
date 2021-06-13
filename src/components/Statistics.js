@@ -7,7 +7,6 @@ export class Statistics extends Component {
       this.props;
     return (
       <>
-        <h1>Statistics</h1>
         <ul>
           <li>
             <p>Good: {countGood}</p>
