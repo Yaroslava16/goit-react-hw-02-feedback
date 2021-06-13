@@ -1,8 +1,8 @@
-import Counter from "./components/Counter";
+import FeedbackOptions from "./components/FeedbackOptions";
 
 const App = () => (
   <>
-    <Counter />
+    <FeedbackOptions />
   </>
 );
 

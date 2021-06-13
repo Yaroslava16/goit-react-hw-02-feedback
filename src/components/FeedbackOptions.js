@@ -1,5 +1,6 @@
 import React from "react";
-import Data from "./DataStatistics";
+import { Buttons } from "./Buttons";
+import { Statistics } from "./Statistics";
 
 class Counter extends React.Component {
   state = {
@@ -13,7 +14,9 @@ class Counter extends React.Component {
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
@@ -29,16 +32,15 @@ class Counter extends React.Component {
       <div className="Conteiner">
         <p>Please leave feedback</p>
 
-        <Data
-          good="good"
+        <Buttons
+          onClickGood={this.handleIncrement("good")}
+          onClickNeutral={this.handleIncrement("neutral")}
+          onClickBad={this.handleIncrement("bad")}
+        />
+        <Statistics
           countGood={good}
-          neutral="neutral"
-          countNeutral={neutral}
-          bad="bad"
           countBad={bad}
-          onButtonGood={this.handleIncrement("good")}
-          onButtonNeutral={this.handleIncrement("neutral")}
-          onButtonBad={this.handleIncrement("bad")}
+          countNeutral={neutral}
           total={this.countTotalFeedback()}
           positiveFeedback={this.countPositiveFeedbackPercentage()}
         />
