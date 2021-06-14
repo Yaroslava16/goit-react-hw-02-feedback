@@ -1,0 +1,27 @@
+.btnConteiner {
+  display: flex;
+  width: 420px;
+  justify-content: space-around;
+}
+
+.btnG,
+.btnN,
+.btnB {
+  border: 2px solid black;
+  border-radius: 5px;
+  min-width: 100px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.btnG:hover {
+  border: 2px solid rgb(104, 248, 8);
+}
+
+.btnN:hover {
+  border: 2px solid rgb(83, 153, 233);
+}
+
+.btnB:hover {
+  border: 2px solid rgb(252, 8, 8);
+}

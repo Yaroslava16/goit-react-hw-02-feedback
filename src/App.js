@@ -1,4 +1,4 @@
-import FeedbackOptions from "./components/FeedbackOptions";
+import FeedbackOptions from './components/Feedback/FeedbackOptions';
 
 const App = () => (
   <>
