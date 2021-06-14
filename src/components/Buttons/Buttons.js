@@ -5,10 +5,22 @@ import styles from './Buttons.module.css';
 
 export class Buttons extends Component {
   render() {
-    const { onClickGood, onClickNeutral, onClickBad } = this.props;
+    const { onLeaveFeedback, btns } = this.props;
     return (
       <div className={styles.btnConteiner}>
-        <button
+        {btns.map(btn => {
+          return (
+            <button
+              key={btn}
+              className={styles.btn}
+              type="button"
+              onClick={onLeaveFeedback(btn)}
+            >
+              {btn}
+            </button>
+          );
+        })}
+        {/* <button
           className={styles.btnG}
           type="button"
           onClick={() => {
@@ -34,7 +46,7 @@ export class Buttons extends Component {
           }}
         >
           Bad
-        </button>
+        </button> */}
       </div>
     );
   }

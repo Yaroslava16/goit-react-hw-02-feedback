@@ -35,9 +35,8 @@ class Counter extends React.Component {
         <p className={styles.title}>Please leave feedback</p>
 
         <Buttons
-          onClickGood={this.handleIncrement('good')}
-          onClickNeutral={this.handleIncrement('neutral')}
-          onClickBad={this.handleIncrement('bad')}
+          btns={Object.keys(this.state)}
+          onLeaveFeedback={this.handleIncrement}
         />
         <h1 className={styles.titleStatistics}>Statistics</h1>
         {good || neutral || bad >= 1 ? (
